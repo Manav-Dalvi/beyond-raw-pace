@@ -3,7 +3,7 @@ from components.f1_theme import inject_global_css, register_plotly_theme
 from sections import hero, question, data, block1, block2, block3, block4, verdict, method, credits
 
 st.set_page_config(
-    page_title="Beyond Raw Pace — F1 Strategy",
+    page_title="Beyond Raw Pace - F1 Strategy",
     page_icon="🏁",
     layout="wide",
     initial_sidebar_state="collapsed",

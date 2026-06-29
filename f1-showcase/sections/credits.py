@@ -47,7 +47,7 @@ def render():
             '<div class="card accent reveal" style="margin-top:.8rem">'
             '<div style="color:#9A9AA8;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:.8rem">LLM-Assistance Disclosure</div>'
             '<div style="color:#9A9AA8;font-size:.88rem;line-height:1.5">'
-            'Large language models (Claude) were used as coding and writing assistants '
+            'Large language models (Claude, ChatGPT, Gemini) were used as coding assistants '
             'during the development of this project. All analytical decisions, '
             'interpretations, and the academic content were made and verified by the team. '
             "This use is consistent with the course's academic integrity guidelines."
