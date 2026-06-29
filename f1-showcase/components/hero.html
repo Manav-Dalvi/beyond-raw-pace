@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#15151E; overflow:hidden; }
+  canvas { position:absolute; top:0; left:0; width:100%; height:100%; }
+  .hero-text {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    text-align:center; z-index:10; width:90%;
+  }
+  .tag {
+    font-family:'JetBrains Mono',monospace; color:#E10600;
+    font-size:.75rem; letter-spacing:.3em; text-transform:uppercase;
+    margin-bottom:1rem; opacity:0; animation:fadeUp .6s .4s ease forwards;
+  }
+  h1 {
+    font-family:'Titillium Web',sans-serif; font-weight:900;
+    font-size:clamp(2rem,6vw,4rem); color:#E8E8E8;
+    letter-spacing:-.02em; line-height:1.05;
+    opacity:0; animation:fadeUp .7s .7s ease forwards;
+  }
+  h1 span { color:#E10600; }
+  .hook {
+    font-family:'Titillium Web',sans-serif; color:#9A9AA8;
+    font-size:clamp(1rem,2.5vw,1.25rem); margin-top:1.2rem;
+    max-width:620px; margin-left:auto; margin-right:auto; line-height:1.5;
+    opacity:0; animation:fadeUp .7s 1s ease forwards;
+  }
+  .scroll-cue {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    font-family:'Titillium Web',sans-serif; color:#9A9AA8; font-size:.8rem;
+    letter-spacing:.2em; text-transform:uppercase;
+    opacity:0; animation:fadeUp .6s 1.5s ease forwards;
+    display:flex; flex-direction:column; align-items:center; gap:.5rem;
+  }
+  .scroll-arrow {
+    width:20px; height:20px; border-right:2px solid #9A9AA8;
+    border-bottom:2px solid #9A9AA8; transform:rotate(45deg);
+    animation:bounce 1.4s infinite;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes bounce {
+    0%,100% { transform:rotate(45deg) translateY(0); }
+    50%      { transform:rotate(45deg) translateY(5px); }
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="hero-text">
+  <div class="tag">TU Dortmund · Data &amp; AI in Economics</div>
+  <h1>Beyond <span>Raw Pace</span><br>Strategic Decision-Making in F1</h1>
+  <div class="hook">In Formula 1, the car decides most of the race. But not all of it.<br>
+  We measured exactly how much is left for strategy — and found teams leaving points on the table.</div>
+</div>
+<div class="scroll-cue">
+  <span>Scroll to begin</span>
+  <div class="scroll-arrow"></div>
+</div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H, lines = [], raf;
+
+function resize() {
+  W = canvas.width  = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+
+class Line {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - .3) * 2.5;
+    this.vy = (Math.random() - .5) * .8;
+    this.len = 60 + Math.random() * 160;
+    this.alpha = .08 + Math.random() * .18;
+    this.color = Math.random() < .08 ? '#E10600' : Math.random() < .15 ? '#00D2BE' : '#E8E8E8';
+    this.width = .5 + Math.random() * 1.2;
+    this.tail = [];
+  }
+  update() {
+    this.tail.push({x: this.x, y: this.y});
+    if (this.tail.length > this.len) this.tail.shift();
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < -200 || this.x > W+200 || this.y < -50 || this.y > H+50) this.reset();
+  }
+  draw() {
+    if (this.tail.length < 2) return;
+    ctx.save();
+    for (let i = 1; i < this.tail.length; i++) {
+      const t = i / this.tail.length;
+      ctx.beginPath();
+      ctx.strokeStyle = this.color;
+      ctx.globalAlpha = this.alpha * t;
+      ctx.lineWidth = this.width * t;
+      ctx.moveTo(this.tail[i-1].x, this.tail[i-1].y);
+      ctx.lineTo(this.tail[i].x, this.tail[i].y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+function init() {
+  resize();
+  lines = Array.from({length: 55}, () => new Line());
+  for (let i = 0; i < 60; i++) lines.forEach(l => l.update());
+}
+
+function frame() {
+  ctx.fillStyle = 'rgba(21,21,30,.18)';
+  ctx.fillRect(0,0,W,H);
+  lines.forEach(l => { l.update(); l.draw(); });
+  raf = requestAnimationFrame(frame);
+}
+
+const io = new IntersectionObserver(e => {
+  if (!e[0].isIntersecting) { cancelAnimationFrame(raf); }
+  else { frame(); }
+});
+io.observe(canvas);
+
+window.addEventListener('resize', () => { resize(); });
+init();
+frame();
+</script>
+</body>
+</html>

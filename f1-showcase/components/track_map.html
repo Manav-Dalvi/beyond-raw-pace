@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:transparent; font-family:'Titillium Web',sans-serif; padding:1rem; color:#E8E8E8; }
+  .grid { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.2rem; }
+  .circuit-btn {
+    padding:.45rem .9rem; border-radius:6px; cursor:pointer; font-size:.78rem;
+    font-family:'Titillium Web',sans-serif; font-weight:600;
+    border:1px solid #2A2A38; background:#1F1F2B; color:#9A9AA8;
+    transition:all .2s;
+  }
+  .circuit-btn:hover { border-color:#9A9AA8; color:#E8E8E8; }
+  .circuit-btn.selected { border-color:#E10600; background:rgba(225,6,0,.12); color:#E8E8E8; }
+  .circuit-btn.archetype-0 { border-left:3px solid #E10600; }
+  .circuit-btn.archetype-1 { border-left:3px solid #FFF200; }
+  .circuit-btn.archetype-2 { border-left:3px solid #00D2BE; }
+  .panel {
+    background:#1F1F2B; border:1px solid #2A2A38; border-radius:12px;
+    padding:1.2rem 1.5rem; min-height:90px;
+  }
+  .panel-name { font-size:1.1rem; font-weight:700; color:#E8E8E8; margin-bottom:.4rem; }
+  .panel-archetype { font-size:.8rem; text-transform:uppercase; letter-spacing:.15em; margin-bottom:.6rem; }
+  .panel-meta { display:flex; gap:2rem; flex-wrap:wrap; }
+  .meta-item { }
+  .meta-val { font-family:'JetBrains Mono',monospace; font-size:1.1rem; font-weight:700; }
+  .meta-lbl { font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:#9A9AA8; margin-top:.1rem; }
+  .placeholder { color:#9A9AA8; font-size:.9rem; }
+  .legend { display:flex; gap:1.2rem; margin-bottom:.8rem; flex-wrap:wrap; }
+  .legend-item { display:flex; align-items:center; gap:.4rem; font-size:.75rem; color:#9A9AA8; }
+  .legend-dot { width:10px; height:10px; border-radius:50%; }
+</style>
+</head>
+<body>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#E10600"></div>Strategy decides here</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#FFF200"></div>All-rounders</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#00D2BE"></div>Chaos-friendly</div>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="panel" id="panel"><div class="placeholder">Select a circuit to see its strategic profile</div></div>
+
+<script>
+const COLORS = ['#E10600','#FFF200','#00D2BE'];
+const ARCHETYPE_LABELS = ['Strategy decides here','All-rounders','Chaos-friendly'];
+
+// Data injected from Python (window.CIRCUITS_DATA)
+const data = window.CIRCUITS_DATA || [];
+
+const grid = document.getElementById('grid');
+const panel = document.getElementById('panel');
+
+data.forEach((c, i) => {
+  const ai = ARCHETYPE_LABELS.indexOf(c.plain);
+  const btn = document.createElement('button');
+  btn.className = 'circuit-btn archetype-' + Math.max(ai,0);
+  btn.textContent = c.circuit;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.circuit-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    showPanel(c, ai);
+  });
+  grid.appendChild(btn);
+});
+
+function showPanel(c, ai) {
+  const color = COLORS[Math.max(ai,0)];
+  panel.innerHTML = `
+    <div class="panel-name">${c.circuit}</div>
+    <div class="panel-archetype" style="color:${color}">${c.plain || c.archetype}</div>
+    <div class="panel-meta">
+      <div class="meta-item">
+        <div class="meta-val" style="color:${color}">${c.beta !== undefined ? c.beta.toFixed(3) : '—'}</div>
+        <div class="meta-lbl">Penalty-cost elasticity (β)</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-val" style="color:#9A9AA8">${c.sc_freq !== undefined ? (c.sc_freq*100).toFixed(0)+'%' : '—'}</div>
+        <div class="meta-lbl">Safety-car frequency</div>
+      </div>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "scale": {
+    "driver_races": 8966,
+    "variables": 48,
+    "season_start": 2003,
+    "season_end": 2024,
+    "seasons": 22,
+    "sources": ["Jolpica (Ergast successor)", "FastF1", "Open-Meteo"],
+    "circuits_clustered": 22,
+    "sessions_missing": 19,
+    "scored_point_base_rate": 0.45
+  },
+  "block4_supervised": {
+    "auc": {"M0": 0.8269, "M1": 0.8485, "M2": 0.8504, "M3": 0.8619, "M4": 0.8656},
+    "labels": {"M0": "Grid only", "M1": "+ Car quality", "M2": "+ Strategy",
+               "M3": "+ Tuning", "M4": "XGBoost"},
+    "lift_M1_M4": 0.0171,
+    "delta_M2_M1": 0.0019,
+    "strategic_alpha": 0.165,
+    "car_quality_share": 0.617,
+    "other_shares": [0.219, 0.064, 0.101],
+    "pooled_n": 5896
+  },
+  "block2_iv": {
+    "ate_pp": -10.1, "p": 0.294, "ci_pp": [-29.0, 8.8],
+    "q1_frontrunner_pp": 11.1, "q5_backmarker_pp": -9.1,
+    "partial_F": 74.37, "sc_races": 72
+  },
+  "block3_backdoor": {
+    "ate_pp": 12.8, "p": 0.063, "refutations_pass": true,
+    "timing_tests": "null"
+  },
+  "block1_unsupervised": {
+    "k": 3, "silhouette": 0.349, "ari_kmeans_vs_hier": 1.000,
+    "beta_threshold": 0.5863,
+    "archetypes": [
+      {"name": "Large Field Spread / Strategy-Dependent", "plain": "Strategy decides here", "n": 9},
+      {"name": "Balanced / Standard Racing", "plain": "All-rounders", "n": 9},
+      {"name": "High-Overtaking / Fluid Strategy", "plain": "Chaos-friendly", "n": 4}
+    ]
+  },
+  "translations": {
+    "alpha": "About one-sixth of what's predictable about a result comes down to strategy. The car decides most of it — but not all.",
+    "iv": "Pitting under a safety car isn't good or bad. It depends who you are.",
+    "penalty": "There's a smart way to time an unavoidable penalty, worth real points. Teams mostly don't take it.",
+    "walkforward": "We only ever let the model see the past, then asked it to predict the next season.",
+    "clusters": "Tracks have personalities. Strategy has more room to matter on some than others."
+  }
+}

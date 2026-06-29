@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#15151E; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; height:100vh;
+    font-family:'Titillium Web',sans-serif;
+  }
+  .lights-label {
+    font-family:'JetBrains Mono',monospace; color:#9A9AA8;
+    font-size:.7rem; letter-spacing:.3em; text-transform:uppercase;
+    margin-bottom:1.2rem;
+  }
+  .lights-row { display:flex; gap:1rem; margin-bottom:2rem; }
+  .light-pod {
+    width:52px; height:80px; border-radius:8px;
+    background:#1F1F2B; border:1px solid #2A2A38;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:8px;
+  }
+  .bulb {
+    width:28px; height:28px; border-radius:50%;
+    background:#2A2A38; border:1px solid #3a3a4a;
+    transition:background .15s, box-shadow .15s;
+  }
+  .bulb.red {
+    background:#E10600;
+    box-shadow:0 0 14px 4px rgba(225,6,0,.6);
+  }
+  .bulb.green {
+    background:#00D2BE;
+    box-shadow:0 0 18px 6px rgba(0,210,190,.7);
+  }
+  .go-text {
+    font-family:'Titillium Web',sans-serif; font-weight:900;
+    font-size:1.6rem; color:#00D2BE; letter-spacing:.1em;
+    opacity:0; transition:opacity .4s;
+    margin-top:.5rem;
+  }
+  .go-text.show { opacity:1; }
+  .skip {
+    font-family:'Titillium Web',sans-serif; color:#9A9AA8;
+    font-size:.75rem; cursor:pointer; text-decoration:underline;
+    margin-top:1rem; opacity:.7;
+  }
+  .skip:hover { color:#E8E8E8; }
+</style>
+</head>
+<body>
+<div class="lights-label">Formation lap complete</div>
+<div class="lights-row">
+  <div class="light-pod"><div class="bulb" id="b1"></div><div class="bulb" id="b1b"></div></div>
+  <div class="light-pod"><div class="bulb" id="b2"></div><div class="bulb" id="b2b"></div></div>
+  <div class="light-pod"><div class="bulb" id="b3"></div><div class="bulb" id="b3b"></div></div>
+  <div class="light-pod"><div class="bulb" id="b4"></div><div class="bulb" id="b4b"></div></div>
+  <div class="light-pod"><div class="bulb" id="b5"></div><div class="bulb" id="b5b"></div></div>
+</div>
+<div class="go-text" id="goText">LIGHTS OUT AND AWAY WE GO</div>
+<div class="skip" onclick="skip()">Skip intro</div>
+<script>
+  const ids = ['b1','b2','b3','b4','b5'];
+  const bids = ['b1b','b2b','b3b','b4b','b5b'];
+  let step = 0;
+  function lightOn(i) {
+    document.getElementById(ids[i]).classList.add('red');
+    document.getElementById(bids[i]).classList.add('red');
+  }
+  function lightsOut() {
+    ids.concat(bids).forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.remove('red');
+      el.classList.add('green');
+    });
+    setTimeout(() => {
+      ids.concat(bids).forEach(id => document.getElementById(id).classList.remove('green'));
+      document.getElementById('goText').classList.add('show');
+    }, 600);
+  }
+  function skip() { window.parent.postMessage('lights-done','*'); }
+  const timings = [400, 900, 1400, 1900, 2400];
+  timings.forEach((t,i) => setTimeout(() => lightOn(i), t));
+  setTimeout(lightsOut, 3200);
+  setTimeout(() => window.parent.postMessage('lights-done','*'), 4400);
+</script>
+</body>
+</html>

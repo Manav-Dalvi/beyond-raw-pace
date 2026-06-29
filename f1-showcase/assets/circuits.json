@@ -1,0 +1,200 @@
+[
+  {
+    "circuitId": "rodriguez",
+    "circuit": "Autódromo Hermanos Rodríguez",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.7028,
+    "sc_freq": 0.4,
+    "pc1": 2.1,
+    "pc2": 0.1
+  },
+  {
+    "circuitId": "shanghai",
+    "circuit": "Shanghai International Circuit",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6791,
+    "sc_freq": 0.6667,
+    "pc1": 1.7,
+    "pc2": -0.5
+  },
+  {
+    "circuitId": "catalunya",
+    "circuit": "Circuit de Barcelona-Catalunya",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6716,
+    "sc_freq": 0.5,
+    "pc1": 1.916,
+    "pc2": 0.374
+  },
+  {
+    "circuitId": "silverstone",
+    "circuit": "Silverstone Circuit",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6624,
+    "sc_freq": 0.7143,
+    "pc1": 1.5,
+    "pc2": -0.8
+  },
+  {
+    "circuitId": "bahrain",
+    "circuit": "Bahrain International Circuit",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6543,
+    "sc_freq": 0.625,
+    "pc1": 1.018,
+    "pc2": -0.913
+  },
+  {
+    "circuitId": "yas_marina",
+    "circuit": "Yas Marina Circuit",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6456,
+    "sc_freq": 0.5,
+    "pc1": 0.9,
+    "pc2": -1.1
+  },
+  {
+    "circuitId": "suzuka",
+    "circuit": "Suzuka Circuit",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6287,
+    "sc_freq": 0.5,
+    "pc1": 1.3,
+    "pc2": 0.5
+  },
+  {
+    "circuitId": "monza",
+    "circuit": "Autodromo Nazionale di Monza",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.6271,
+    "sc_freq": 0.6,
+    "pc1": 1.8,
+    "pc2": -1.3
+  },
+  {
+    "circuitId": "red_bull_ring",
+    "circuit": "Red Bull Ring",
+    "archetype": "Balanced / Standard Racing",
+    "beta": 0.5863,
+    "sc_freq": 0.375,
+    "pc1": 0.7,
+    "pc2": -0.3
+  },
+  {
+    "circuitId": "hungaroring",
+    "circuit": "Hungaroring",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.6366,
+    "sc_freq": 0.1667,
+    "pc1": -0.1,
+    "pc2": 0.9
+  },
+  {
+    "circuitId": "monaco",
+    "circuit": "Circuit de Monaco",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.6074,
+    "sc_freq": 0.6,
+    "pc1": -0.5,
+    "pc2": 1.5
+  },
+  {
+    "circuitId": "sochi",
+    "circuit": "Sochi Autodrom",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.5888,
+    "sc_freq": 0.5,
+    "pc1": -0.8,
+    "pc2": 1.0
+  },
+  {
+    "circuitId": "marina_bay",
+    "circuit": "Marina Bay Street Circuit",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.5754,
+    "sc_freq": 0.75,
+    "pc1": -1.0,
+    "pc2": 0.6
+  },
+  {
+    "circuitId": "interlagos",
+    "circuit": "Autódromo José Carlos Pace",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.5643,
+    "sc_freq": 0.8,
+    "pc1": -1.5,
+    "pc2": 1.8
+  },
+  {
+    "circuitId": "villeneuve",
+    "circuit": "Circuit Gilles Villeneuve",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.5347,
+    "sc_freq": 0.75,
+    "pc1": -1.2,
+    "pc2": 0.4
+  },
+  {
+    "circuitId": "americas",
+    "circuit": "Circuit of the Americas",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.5284,
+    "sc_freq": 0.4,
+    "pc1": -0.327,
+    "pc2": 0.493
+  },
+  {
+    "circuitId": "spa",
+    "circuit": "Circuit de Spa-Francorchamps",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.502,
+    "sc_freq": 0.6667,
+    "pc1": -1.8,
+    "pc2": 1.3
+  },
+  {
+    "circuitId": "albert_park",
+    "circuit": "Albert Park Grand Prix Circuit",
+    "archetype": "Large Field Spread / Strategy-Dependent",
+    "beta": 0.4977,
+    "sc_freq": 0.6,
+    "pc1": -2.088,
+    "pc2": 1.283
+  },
+  {
+    "circuitId": "imola",
+    "circuit": "Autodromo Enzo e Dino Ferrari",
+    "archetype": "High-Overtaking / Fluid Strategy",
+    "beta": 0.5779,
+    "sc_freq": 0.75,
+    "pc1": -1.1,
+    "pc2": -0.8
+  },
+  {
+    "circuitId": "hockenheimring",
+    "circuit": "Hockenheimring",
+    "archetype": "High-Overtaking / Fluid Strategy",
+    "beta": 0.5423,
+    "sc_freq": null,
+    "pc1": -1.5,
+    "pc2": -1.2
+  },
+  {
+    "circuitId": "sepang",
+    "circuit": "Sepang International Circuit",
+    "archetype": "High-Overtaking / Fluid Strategy",
+    "beta": 0.514,
+    "sc_freq": null,
+    "pc1": -1.8,
+    "pc2": -0.6
+  },
+  {
+    "circuitId": "baku",
+    "circuit": "Baku City Circuit",
+    "archetype": "High-Overtaking / Fluid Strategy",
+    "beta": 0.5122,
+    "sc_freq": 0.5,
+    "pc1": -2.001,
+    "pc2": -1.372
+  }
+]

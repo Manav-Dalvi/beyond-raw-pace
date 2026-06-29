@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:transparent; font-family:'Titillium Web',sans-serif; padding:1.5rem; }
+  .title {
+    text-align:center; text-transform:uppercase; letter-spacing:.2em;
+    color:#9A9AA8; font-size:.75rem; margin-bottom:2rem;
+  }
+  .chart-wrap { position:relative; }
+  .driver-row {
+    display:flex; align-items:center; gap:.8rem; margin-bottom:1.2rem;
+  }
+  .driver-label {
+    width:130px; text-align:right; font-size:.85rem; color:#E8E8E8;
+    font-weight:600; flex-shrink:0;
+  }
+  .bar-container { flex:1; position:relative; height:44px; }
+  .center-line {
+    position:absolute; left:50%; top:0; bottom:0;
+    width:2px; background:#2A2A38; z-index:2;
+  }
+  .bar {
+    position:absolute; top:8px; height:28px; border-radius:3px;
+    width:0; transition:width 1s cubic-bezier(.2,.8,.2,1);
+  }
+  .bar.teal { background:#00D2BE; left:50%; box-shadow:0 0 12px rgba(0,210,190,.3); }
+  .bar.red-bar { background:#E10600; right:50%; box-shadow:0 0 12px rgba(225,6,0,.3); }
+  .bar-value {
+    position:absolute; top:50%; transform:translateY(-50%);
+    font-family:'JetBrains Mono',monospace; font-weight:700;
+    font-size:1rem; white-space:nowrap; opacity:0;
+    transition:opacity .4s .8s;
+  }
+  .bar-value.teal-val { color:#00D2BE; left:calc(50% + 8px); }
+  .bar-value.red-val  { color:#E10600; right:calc(50% + 8px); }
+  .bar-value.show { opacity:1; }
+  .axis-labels {
+    display:flex; justify-content:space-between;
+    padding:0; margin-top:.3rem;
+    font-family:'JetBrains Mono',monospace; color:#9A9AA8; font-size:.7rem;
+  }
+  .caveat {
+    margin-top:1.8rem; padding:1rem 1.2rem;
+    background:#1F1F2B; border:1px solid #2A2A38;
+    border-left:3px solid #FFF200; border-radius:8px;
+    font-size:.85rem; color:#9A9AA8; line-height:1.5;
+  }
+  .caveat strong { color:#FFF200; }
+</style>
+</head>
+<body>
+<div class="title">Same decision. Opposite outcomes.</div>
+
+<div class="chart-wrap">
+  <div class="driver-row">
+    <div class="driver-label">Front-runner<br><small style="color:#9A9AA8;font-size:.75rem;">Q1 car quality</small></div>
+    <div class="bar-container">
+      <div class="center-line"></div>
+      <div class="bar teal" id="barTeal"></div>
+      <div class="bar-value teal-val" id="valTeal">+11.1 pp</div>
+    </div>
+  </div>
+  <div class="driver-row">
+    <div class="driver-label">Backmarker<br><small style="color:#9A9AA8;font-size:.75rem;">Q5 car quality</small></div>
+    <div class="bar-container">
+      <div class="center-line"></div>
+      <div class="bar red-bar" id="barRed"></div>
+      <div class="bar-value red-val" id="valRed">−9.1 pp</div>
+    </div>
+  </div>
+  <div class="axis-labels">
+    <span>← Loss</span>
+    <span>Pitting under safety car</span>
+    <span>Gain →</span>
+  </div>
+</div>
+
+<div class="caveat">
+  <strong>Honest note:</strong> The aggregate 2SLS effect is <strong>−10.1 pp</strong> (95% CI: −29.0 to +8.8 pp, p = 0.294) — not statistically significant.
+  The finding is the <strong>heterogeneity</strong>: the same pit call helps the fast car and hurts the slow one.
+  Based on 72 safety-car races, 2003–2024.
+</div>
+
+<script>
+  // Each bar fills to a % of the half-width
+  // +11.1 pp and −9.1 pp shown as proportional widths (max 100% = 15pp)
+  const maxPP = 15;
+  function pct(v) { return Math.min(Math.abs(v) / maxPP * 50, 50) + '%'; }
+
+  const obs = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    setTimeout(() => {
+      document.getElementById('barTeal').style.width = pct(11.1);
+      document.getElementById('barRed').style.width = pct(9.1);
+      document.getElementById('valTeal').classList.add('show');
+      document.getElementById('valRed').classList.add('show');
+    }, 200);
+  }, {threshold: 0.4});
+  obs.observe(document.body);
+</script>
+</body>
+</html>
