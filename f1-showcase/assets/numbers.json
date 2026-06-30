@@ -13,7 +13,7 @@
   "block4_supervised": {
     "auc": {"M0": 0.8269, "M1": 0.8485, "M2": 0.8504, "M3": 0.8619, "M4": 0.8656},
     "labels": {"M0": "Grid only", "M1": "+ Car quality", "M2": "+ Strategy",
-               "M3": "+ Tuning", "M4": "XGBoost"},
+               "M3": "Random Forest", "M4": "XGBoost"},
     "lift_M1_M4": 0.0171,
     "delta_M2_M1": 0.0019,
     "strategic_alpha": 0.165,
@@ -40,7 +40,7 @@
     ]
   },
   "translations": {
-    "alpha": "About one-sixth of what's predictable about a result comes down to strategy. The car decides most of it — but not all.",
+    "alpha": "About one-sixth of what's predictable about a result comes down to strategy. The car decides most of it, but not all.",
     "iv": "Pitting under a safety car isn't good or bad. It depends who you are.",
     "penalty": "There's a smart way to time an unavoidable penalty, worth real points. Teams mostly don't take it.",
     "walkforward": "We only ever let the model see the past, then asked it to predict the next season.",

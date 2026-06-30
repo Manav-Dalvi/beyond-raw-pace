@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 import streamlit.components.v1 as components
 import os
 from data_loader import numbers
@@ -50,10 +50,10 @@ METER_HTML = """<!DOCTYPE html>
     </div>
     <div class="info-item">
       <div class="dot" style="background:#2A2A38"></div>
-      <div class="info-text"><b style="color:#9A9AA8">Teams don't appear to take it.</b> Strategic-timing tests return null — no evidence teams exploit this pattern.</div>
+      <div class="info-text"><b style="color:#9A9AA8">Teams don't appear to take it.</b> Strategic-timing tests return null: no evidence teams exploit this pattern.</div>
     </div>
     <div class="caveat">
-      <b style="color:#FFF200">Statistical caveat:</b> p ≈ 0.063 — marginally significant. Frame as "evidence of," not "proof." Both DoWhy refutation tests pass.
+      <b style="color:#FFF200">Statistical caveat:</b> p about 0.063, marginally significant. Frame as "evidence of," not "proof." Both DoWhy refutation tests pass.
     </div>
   </div>
 </div>
@@ -77,11 +77,11 @@ def render():
     b3 = n["block3_backdoor"]
 
     st.markdown('<div id="block3" style="scroll-margin-top:80px;height:0;overflow:hidden;"></div>', unsafe_allow_html=True)
-    st.markdown(f'<span style="{_TAG}">Block 3 — Causal Inference (Backdoor)</span>', unsafe_allow_html=True)
-    st.markdown(f'<span style="{_TTL}">The Untaken Advantage</span>', unsafe_allow_html=True)
+    st.markdown(f'<span style="{_TAG}">Block 3: Causal Inference (Backdoor)</span>', unsafe_allow_html=True)
+    st.markdown(f'<span style="{_TTL}">A smart move that teams mostly do not make</span>', unsafe_allow_html=True)
     st.markdown(
         f'<span style="{_HOOK}">{n["translations"]["penalty"]}'
-        f' A backdoor causal estimate — with DoWhy refutation checks — reveals a '
+        f' A backdoor causal estimate (with DoWhy refutation checks) reveals a '
         f'real but mostly unclaimed strategic edge.</span>',
         unsafe_allow_html=True,
     )
@@ -109,4 +109,4 @@ def render():
 
     p = os.path.join(_PLOTS, "b3_01_elasticity_table.png")
     if os.path.exists(p):
-        st.image(p, caption="Penalty-cost elasticity by circuit — circuits below the median threshold (β < 0.5863) are identified as 'low-cost' venues where timing a penalty preserves the most position.", use_container_width=True)
+        st.image(p, caption="Penalty-cost elasticity by circuit. Circuits below the median threshold (β < 0.5863) are identified as low-cost venues where timing a penalty preserves the most position.", use_container_width=True)

@@ -79,11 +79,10 @@
       document.getElementById('goText').classList.add('show');
     }, 600);
   }
-  function skip() { window.parent.postMessage('lights-done','*'); }
+  function skip() { document.getElementById('goText').classList.add('show'); }
   const timings = [400, 900, 1400, 1900, 2400];
   timings.forEach((t,i) => setTimeout(() => lightOn(i), t));
   setTimeout(lightsOut, 3200);
-  setTimeout(() => window.parent.postMessage('lights-done','*'), 4400);
 </script>
 </body>
 </html>

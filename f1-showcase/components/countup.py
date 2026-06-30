@@ -25,7 +25,7 @@ COUNTUP_TEMPLATE = """
 </head>
 <body>
 <div class="wrap">
-  <div class="num" id="counter">{PREFIX}0{SUFFIX}</div>
+  <div class="num" id="counter">{PREFIX}{ZERO_VAL}{SUFFIX}</div>
   <div class="label">{LABEL}</div>
   {CAPTION_HTML}
 </div>
@@ -74,7 +74,9 @@ def countup(
     text_align = "center" if align == "center" else "left"
     flex_align = "center" if align == "center" else "flex-start"
 
+    zero_val = f"{0:.{decimals}f}"
     html = COUNTUP_TEMPLATE.replace("{TARGET}", str(value))
+    html = html.replace("{ZERO_VAL}", zero_val)
     html = html.replace("{PREFIX}", prefix)
     html = html.replace("{SUFFIX}", suffix)
     html = html.replace("{DECIMALS}", str(decimals))

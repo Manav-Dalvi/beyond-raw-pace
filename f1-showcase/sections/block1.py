@@ -16,12 +16,12 @@ def render():
     b1 = n["block1_unsupervised"]
 
     st.markdown('<div id="block1" style="scroll-margin-top:80px;height:0;overflow:hidden;"></div>', unsafe_allow_html=True)
-    st.markdown(f'<span style="{_TAG}">Block 1 — Circuit Structure</span>', unsafe_allow_html=True)
+    st.markdown(f'<span style="{_TAG}">Block 1: Circuit Structure</span>', unsafe_allow_html=True)
     st.markdown(f'<span style="{_TTL}">Tracks Have Personalities</span>', unsafe_allow_html=True)
     st.markdown(
         f'<span style="{_HOOK}">{n["translations"]["clusters"]}'
         f' PCA + K-Means clustering (k={b1["k"]}) on {n["scale"]["circuits_clustered"]} circuits '
-        f'reveals three distinct strategic archetypes.</span>',
+        f'reveals three circuit archetypes.</span>',
         unsafe_allow_html=True,
     )
 
@@ -98,7 +98,7 @@ def render():
     with col_a:
         p = os.path.join(_PLOTS, "b1_07_elasticity_bars.png")
         if os.path.exists(p):
-            st.image(p, caption="Penalty-cost elasticity (β) per circuit — ranked. Error bars = 95% CI from OLS. Red = high-cost (β > 0.75), yellow = moderate, teal = low-cost.", use_container_width=True)
+            st.image(p, caption="Penalty-cost elasticity (β) per circuit, ranked. Error bars = 95% CI from OLS. Red = high-cost (β > 0.75), yellow = moderate, teal = low-cost.", use_container_width=True)
     with col_b:
         p = os.path.join(_PLOTS, "b1_05_biplot.png")
         if os.path.exists(p):

@@ -74,11 +74,11 @@ function showPanel(c, ai) {
     <div class="panel-archetype" style="color:${color}">${c.plain || c.archetype}</div>
     <div class="panel-meta">
       <div class="meta-item">
-        <div class="meta-val" style="color:${color}">${c.beta !== undefined ? c.beta.toFixed(3) : '—'}</div>
+        <div class="meta-val" style="color:${color}">${c.beta !== undefined ? c.beta.toFixed(3) : '-'}</div>
         <div class="meta-lbl">Penalty-cost elasticity (β)</div>
       </div>
       <div class="meta-item">
-        <div class="meta-val" style="color:#9A9AA8">${c.sc_freq !== undefined ? (c.sc_freq*100).toFixed(0)+'%' : '—'}</div>
+        <div class="meta-val" style="color:#9A9AA8">${c.sc_freq !== undefined ? (c.sc_freq*100).toFixed(0)+'%' : '-'}</div>
         <div class="meta-lbl">Safety-car frequency</div>
       </div>
     </div>

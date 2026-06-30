@@ -24,7 +24,7 @@ def render():
             '<div class="card reveal" style="margin-top:.8rem">'
             '<div style="color:#9A9AA8;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:.8rem">Data Sources</div>'
             '<div style="color:#E8E8E8;font-size:.9rem;line-height:1.8">'
-            'Jolpica / Ergast API (race results, 2003–2024)<br>'
+            'Jolpica / Ergast API (race results, 2003-2024)<br>'
             'FastF1 (telemetry &amp; session data)<br>'
             'Open-Meteo (weather data)'
             '</div>'
@@ -47,9 +47,8 @@ def render():
             '<div class="card accent reveal" style="margin-top:.8rem">'
             '<div style="color:#9A9AA8;font-size:.78rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:.8rem">LLM-Assistance Disclosure</div>'
             '<div style="color:#9A9AA8;font-size:.88rem;line-height:1.5">'
-            'Large language models (Claude, ChatGPT, Gemini) were used as coding assistants '
-            'during the development of this project. All analytical decisions, '
-            'interpretations, and the academic content were made and verified by the team. '
+            'Portions of the analysis and this site were developed with the assistance of AI tools, '
+            'with all results verified by the authors against the source notebook. '
             "This use is consistent with the course's academic integrity guidelines."
             '</div>'
             '</div>',

@@ -23,6 +23,7 @@ NAV_HTML = """
   <a href="#block4">The Model</a>
   <a href="#verdict">Verdict</a>
   <a href="#method">Method</a>
+  <a href="#credits">Credits</a>
 </nav>
 """
 st.markdown(NAV_HTML, unsafe_allow_html=True)

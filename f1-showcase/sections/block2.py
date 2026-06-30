@@ -15,12 +15,12 @@ def render():
     b2 = n["block2_iv"]
 
     st.markdown('<div id="block2" style="scroll-margin-top:80px;height:0;overflow:hidden;"></div>', unsafe_allow_html=True)
-    st.markdown(f'<span style="{_TAG}">Block 2 — Causal Inference (IV)</span>', unsafe_allow_html=True)
-    st.markdown(f'<span style="{_TTL}">The Safety-Car Gamble</span>', unsafe_allow_html=True)
+    st.markdown(f'<span style="{_TAG}">Block 2: Causal Inference (IV)</span>', unsafe_allow_html=True)
+    st.markdown(f'<span style="{_TTL}">The same decision, two opposite outcomes</span>', unsafe_allow_html=True)
     st.markdown(
         f'<span style="{_HOOK}">{n["translations"]["iv"]}'
-        f' We used instrumental variables — safety-car deployment frequency per circuit '
-        f'as an instrument — to isolate cause from correlation.</span>',
+        f' We used instrumental variables, with safety-car deployment frequency per circuit '
+        f'as an instrument, to isolate cause from correlation.</span>',
         unsafe_allow_html=True,
     )
 
@@ -70,7 +70,7 @@ def render():
     with col_a:
         p = os.path.join(_PLOTS, "b2_01_dag.png")
         if os.path.exists(p):
-            st.image(p, caption="Causal DAG — specifying confounders before estimation. SC deployment frequency is the instrument for pit decisions.", use_container_width=True)
+            st.image(p, caption="Causal DAG: specifying confounders before estimation. SC deployment frequency is the instrument for pit decisions.", use_container_width=True)
     with col_b:
         p = os.path.join(_PLOTS, "b2_04_hte_forest.png")
         if os.path.exists(p):

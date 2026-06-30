@@ -34,7 +34,7 @@ def render():
         f'<div class="card reveal" style="margin-top:1rem">'
         f'<div style="color:#9A9AA8;font-size:.85rem;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.15em">Coverage</div>'
         f'<div style="color:#E8E8E8">'
-        f'Seasons <b style="color:#00D2BE">{s["season_start"]}–{s["season_end"]}</b> · '
+        f'Seasons <b style="color:#00D2BE">{s["season_start"]}-{s["season_end"]}</b> · '
         f'{s["circuits_clustered"]} circuits clustered · '
         f'{s["sessions_missing"]} FastF1 sessions missing (noted, not imputed) · '
         f'Drivers score points in ~{int(s["scored_point_base_rate"]*100)}% of races'

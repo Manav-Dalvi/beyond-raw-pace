@@ -100,11 +100,17 @@ def inject_global_css():
   var obs = new IntersectionObserver(function(entries) {{
     entries.forEach(function(e) {{ if(e.isIntersecting) e.target.classList.add('visible'); }});
   }}, {{threshold:0.1}});
-  function init() {{
-    d.querySelectorAll('.reveal').forEach(function(el) {{ obs.observe(el); }});
+  var observed = new WeakSet();
+  function observeNew(root) {{
+    root.querySelectorAll('.reveal').forEach(function(el) {{
+      if (!observed.has(el)) {{ observed.add(el); obs.observe(el); }}
+    }});
   }}
-  setTimeout(init, 500);
-  setTimeout(init, 1500);
+  observeNew(d);
+  // Streamlit renders sections asynchronously, so keep watching for
+  // .reveal elements added after the initial scan (otherwise late-mounted
+  // sections never trigger and stay invisible).
+  new MutationObserver(function() {{ observeNew(d); }}).observe(d.body, {{childList:true, subtree:true}});
 }})();
 </script>"""
     components.html(script, height=0)

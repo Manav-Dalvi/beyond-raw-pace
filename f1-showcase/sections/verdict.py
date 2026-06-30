@@ -35,7 +35,7 @@ def render():
         {
             "tag": "Finding 2", "color": "#FFF200",
             "title": "Tracks have personalities.",
-            "body": "Three circuit archetypes — Strategy-dependent, All-rounders, Chaos-friendly — "
+            "body": "Three circuit archetypes (Strategy-dependent, All-rounders, Chaos-friendly), "
                     "each creating different opportunity spaces for strategy to matter. "
                     "The clustering is stable (ARI = 1.000 across two algorithms).",
         },
@@ -44,7 +44,7 @@ def render():
             "title": "A +12.8 pp advantage. Mostly unclaimed.",
             "body": f"Timing grid penalties at low-cost circuits is worth <b style='color:#00D2BE'>+{b3['ate_pp']} pp</b>. "
                     f"Evidence is marginally significant (p ≈ {b3['p']}), passes refutation. "
-                    f"Teams don't appear to exploit it — yet.",
+                    f"Teams don't appear to exploit it. Not yet.",
         },
     ]
 
@@ -63,7 +63,7 @@ def render():
     st.markdown(
         f'<div class="card accent reveal" style="margin-top:1.5rem;text-align:center;padding:2rem">'
         f'<div style="font-size:1.4rem;font-weight:900;color:#E8E8E8;letter-spacing:-.01em;margin-bottom:.6rem;font-family:\'Titillium Web\',sans-serif;">'
-        f'Strategy is a real, measurable edge — worth about one-sixth of what\'s predictable.'
+        f'Strategy is a real, measurable edge, worth about one sixth of what\'s predictable.'
         f'</div>'
         f'<div style="color:#9A9AA8;font-size:1rem;max-width:580px;margin:auto;font-family:\'Titillium Web\',sans-serif;">'
         f'At least one slice of it is currently unclaimed. '

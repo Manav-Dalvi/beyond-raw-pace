@@ -11,24 +11,24 @@ def render():
     st.markdown(f'<span style="{_TTL}">How We Kept It Honest</span>', unsafe_allow_html=True)
     st.markdown(
         f'<span style="{_HOOK}">For the technical panel. '
-        f'The non-technical reader can skip this — the story above stands on its own.</span>',
+        f'The non-technical reader can skip this. The story above stands on its own.</span>',
         unsafe_allow_html=True,
     )
 
     methods = [
         ("Walk-forward validation",
          "Never random CV. Models are trained on all prior seasons and tested on the next. "
-         "This mirrors how a real forecast works — we only ever showed the model the past."),
+         "This mirrors how a real forecast works: we only ever showed the model the past."),
         ("Instrumental variables (Block 2)",
          "We use each circuit's historical safety-car frequency as an instrument for pit decisions. "
          "Instrument relevance confirmed: partial F = 74.37. "
-         "Aggregate 2SLS ATE = −10.1 pp (p = 0.294, not significant). "
+         "Aggregate 2SLS ATE = -10.1 pp (p = 0.294, not significant). "
          "Finding is the heterogeneity across car-quality quintiles."),
         ("Backdoor causal estimate (Block 3)",
          "DoWhy with a backdoor adjustment for confounders. "
-         "ATE = +12.8 pp, p ≈ 0.063 (marginal). "
+         "ATE = +12.8 pp, p about 0.063 (marginal). "
          "Both refutation tests (random common cause, placebo treatment) pass. "
-         "Strategic-timing tests return null — teams do not appear to exploit the pattern."),
+         "Strategic-timing tests return null. Teams do not appear to exploit the pattern."),
         ("Pre-specified thresholds",
          "The penalty-cost elasticity threshold (β = 0.5863) was fixed before analysis. "
          "It was not recomputed post-hoc to sharpen the finding."),
@@ -36,8 +36,8 @@ def render():
          "Causal structure was specified via DAGs before estimation. "
          "Confounders (team budget, circuit characteristics) were explicitly modelled."),
         ("Honestly reported null results",
-         "Block 2 aggregate is negative and not significant — stated plainly. "
-         "Block 3 is marginal — we say 'evidence of,' not 'proof.' "
+         "Block 2 aggregate is negative and not significant, stated plainly. "
+         "Block 3 is marginal. We say 'evidence of,' not 'proof.' "
          "We did not cherry-pick significant sub-groups after finding a null aggregate."),
     ]
 
